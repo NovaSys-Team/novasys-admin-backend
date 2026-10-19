@@ -4,6 +4,8 @@ import '../../../core/theme/admin_theme.dart';
 import '../../../shared/widgets/admin_widgets.dart';
 import '../../attendance/controllers/attendance_controller.dart';
 import '../../attendance/views/attendance_view.dart';
+import '../../drivers/controllers/drivers_controller.dart';
+import '../../drivers/views/drivers_view.dart';
 import '../../overview/controllers/overview_controller.dart';
 import '../../overview/views/overview_view.dart';
 import '../../parents/controllers/parents_controller.dart';
@@ -14,6 +16,8 @@ import '../../students/controllers/students_controller.dart';
 import '../../students/views/students_view.dart';
 import '../../trips/controllers/trips_controller.dart';
 import '../../trips/views/trips_view.dart';
+import '../../verification/controllers/verification_controller.dart';
+import '../../verification/views/verification_view.dart';
 import '../controllers/shell_controller.dart';
 import '../models/admin_destination.dart';
 import 'admin_sidebar.dart';
@@ -32,6 +36,8 @@ class _AdminShellState extends State<AdminShell> {
   final _sos = SosController();
   final _parents = ParentsController();
   final _students = StudentsController();
+  final _drivers = DriversController();
+  final _verification = VerificationController();
   final _scaffold = GlobalKey<ScaffoldState>();
   @override
   void dispose() {
@@ -41,6 +47,8 @@ class _AdminShellState extends State<AdminShell> {
     _sos.dispose();
     _parents.dispose();
     _students.dispose();
+    _drivers.dispose();
+    _verification.dispose();
     super.dispose();
   }
 
@@ -109,6 +117,12 @@ class _AdminShellState extends State<AdminShell> {
                             else if (_controller.selected ==
                                 AdminDestination.students)
                               StudentsView(controller: _students)
+                            else if (_controller.selected ==
+                                AdminDestination.drivers)
+                              DriversView(controller: _drivers)
+                            else if (_controller.selected ==
+                                AdminDestination.verification)
+                              VerificationView(controller: _verification)
                             else
                               _Placeholder(
                                 destination: _controller.selected,
