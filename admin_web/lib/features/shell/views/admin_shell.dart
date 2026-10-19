@@ -6,6 +6,8 @@ import '../../attendance/controllers/attendance_controller.dart';
 import '../../attendance/views/attendance_view.dart';
 import '../../overview/controllers/overview_controller.dart';
 import '../../overview/views/overview_view.dart';
+import '../../parents/controllers/parents_controller.dart';
+import '../../parents/views/parents_view.dart';
 import '../../sos/controllers/sos_controller.dart';
 import '../../sos/views/sos_view.dart';
 import '../../trips/controllers/trips_controller.dart';
@@ -26,6 +28,7 @@ class _AdminShellState extends State<AdminShell> {
   final _trips = TripsController();
   final _attendance = AttendanceController();
   final _sos = SosController();
+  final _parents = ParentsController();
   final _scaffold = GlobalKey<ScaffoldState>();
   @override
   void dispose() {
@@ -33,6 +36,7 @@ class _AdminShellState extends State<AdminShell> {
     _trips.dispose();
     _attendance.dispose();
     _sos.dispose();
+    _parents.dispose();
     super.dispose();
   }
 
@@ -95,6 +99,9 @@ class _AdminShellState extends State<AdminShell> {
                             else if (_controller.selected ==
                                 AdminDestination.emergency)
                               SosView(controller: _sos)
+                            else if (_controller.selected ==
+                                AdminDestination.parents)
+                              ParentsView(controller: _parents)
                             else
                               _Placeholder(
                                 destination: _controller.selected,
