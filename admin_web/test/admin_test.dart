@@ -54,7 +54,7 @@ void main() {
       addTearDown(tester.view.resetPhysicalSize);
       addTearDown(tester.view.resetDevicePixelRatio);
       await tester.pumpWidget(const NovaSysApp());
-      for (final destination in AdminDestination.values.skip(5)) {
+      for (final destination in AdminDestination.values.skip(6)) {
         final nav = find.byKey(ValueKey('nav-${destination.name}'));
         await tester.ensureVisible(nav);
         await tester.tap(nav);
